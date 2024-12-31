@@ -1,0 +1,14 @@
+services:
+  openWebUI:
+    image: ghcr.io/open-webui/open-webui:main
+    restart: always
+    ports:
+      - "8080:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - open-webui-local:/app/backend/data
+      - ./rag_docs:/app/backend/data/docs
+  
+volumes:
+  open-webui-local:
